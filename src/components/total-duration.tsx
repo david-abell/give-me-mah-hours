@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { DateTime, Duration } from "luxon";
 import { Row } from "@tanstack/react-table";
