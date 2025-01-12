@@ -12,17 +12,15 @@ type Props = {
     startTime: DateTime<boolean> | null | undefined,
     endTime: DateTime<boolean> | null | undefined
   ) => void;
+  lastPeriodEnd: DateTime<boolean> | null | undefined;
 };
 
-const currentHour = DateTime.now().startOf("hour");
-const nextHour = DateTime.now().startOf("hour").plus({ hour: 1 });
-
-export function TimeCard({ handler }: Props) {
+export function TimeCard({ handler, lastPeriodEnd }: Props) {
   const [startTime, setStartTime] = useState<
     DateTime<boolean> | null | undefined
-  >(currentHour);
+  >(lastPeriodEnd);
   const [endTime, setEndTime] = useState<DateTime<boolean> | null | undefined>(
-    nextHour
+    lastPeriodEnd?.plus({ hour: 1 })
   );
 
   return (
